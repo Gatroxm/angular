@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Proyecto con angular</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+	<hr>
+	<div class="container">
+		<div class="row" ng-controller="ControladorFiltros">
+			<div class="col-md-4">
+				<form ng-submit = "agregarEmpleado()">
+					<h1 class="text-info">Agrega Un Empleado</h1>
+					<div class="form-group">
+						<label for="">Nombres</label>
+						<input type="text" class="form-control" ng-model="Nuevonombre">
+					</div>
+					<div class="form-group">
+						<label for="">Primer Apellido</label>
+						<input type="text" class="form-control" ng-model="Nuevopaterno">
+					</div>
+					<div class="form-group">
+						<label for="">Segundo Apellido</label>
+						<input type="text" class="form-control" ng-model="Nuevomaterno">
+					</div>
+					<div class="form-group">
+						<label for="">Dìa de Ingreso</label>
+						<input type="date" class="form-control" ng-model="Nuevoprimerdia">
+					</div>
+					<div class="form-group">
+						<label for="">Salario</label>
+						<input type="text" class="form-control" ng-model="Nuevosalario">
+					</div>
+					<div class="form-group">
+						<label for="">Telèfono</label>
+						<input type="text" class="form-control" ng-model="Nuevotelefono">
+					</div>
+					<div class="form-group">
+						<label for="">comiciòn</label>
+						<input type="text" class="form-control" ng-model="Nuevocomicion">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary">Agregar Empleado</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-8">
+				<div class="panel panel-primary">
+  					<div class="panel-heading">
+  						<div class="input-group">
+						  	<span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
+						  	<input type="text" class="form-control" placeholder="Buscar Empleado" aria-describedby="basic-addon1" ng-model="buscar">
+						</div>
+  					</div>
+  					<div class="panel-body">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td><strong><a href="" ng-click="ordenarPor('nombre')">Nombres</a> <span class="caret pointer"ng-click="ordenarPor('-nombre')" ></span></strong></td>
+									<td><strong>Primer Apellido</strong></td>
+									<td><strong>Segundo Apellido</strong></td>
+									<td><strong>Dìa de Ingreso</strong></td>
+									<td><strong>Salario</strong></td>
+									<td><strong>Telèfono</strong></td>
+									<td><strong>comiciòn</strong></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="enpleado in empleados | orderBy:ordernSeleccionano | filter:buscar">
+									<td>{{enpleado.nombre}}</td>
+									<td>{{enpleado.paterno}}</td>
+									<td>{{enpleado.materno}}</td>
+									<td>{{enpleado.primerdia | date:'fullDate'}}</td>
+									<td>{{enpleado.salario | currency}}</td>
+									<td>{{enpleado.telefono}}</td>
+									<td>{{enpleado.comicion | currency}}</td>
+								</tr>
+							</tbody>
+						</table>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/idioma.js"></script>
+</html>
